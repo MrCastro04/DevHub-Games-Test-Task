@@ -4,7 +4,6 @@ namespace Utility
     {
         public static string ANIMATOR_SPEED_ANIMATOR_PARAM = "Speed";
 
-
         // TAGS
         public static string MAIN_CAMERA_TAG = "MainCamera";
         public static string HORSE_TAG = "Horse";

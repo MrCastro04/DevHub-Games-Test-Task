@@ -23,8 +23,8 @@ namespace Horses
         private bool _isWinHorse = false;
         private float _waitTime = 3f;
 
-        public bool CanChoose => _canChoose;
-        public WinHorseManager WinHorseManager { get; private set; }
+        public bool IsWinHorse => _isWinHorse;
+
         public NavMeshAgent Agent { get; private set; }
         public Patrol Patrol { get; private set; }
         public Movement Movement { get; private set; }
@@ -39,10 +39,6 @@ namespace Horses
             Patrol = GetComponent<Patrol>();
 
             Movement = GetComponent<Movement>();
-
-            WinHorseManager =
-                GameObject.FindGameObjectWithTag(Constants.WIN_HORSE_MANAGER_TAG)
-                .GetComponent<WinHorseManager>();
         }
 
         private void OnEnable()
@@ -74,12 +70,7 @@ namespace Horses
 
         public void SetThisHorseWinHorse()
         {
-            _isWinHorse = true;
-        }
-
-        public bool IsWinHorse()
-        {
-            return _isWinHorse;
+            if(!_isWinHorse) _isWinHorse = true;
         }
 
         private void OnMouseDown()

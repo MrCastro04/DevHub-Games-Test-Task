@@ -508,10 +508,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Horse green
       objectReference: {fileID: 0}
-    - target: {fileID: 8241790184769648817, guid: a0dc54397c3cad54d9a138c6bdb311b7, type: 3}
-      propertyPath: m_Speed
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1293,10 +1289,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Horse blue
       objectReference: {fileID: 0}
-    - target: {fileID: 8241790184769648817, guid: a0dc54397c3cad54d9a138c6bdb311b7, type: 3}
-      propertyPath: m_Speed
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1643,10 +1635,6 @@ PrefabInstance:
     - target: {fileID: 6627921264185530798, guid: a0dc54397c3cad54d9a138c6bdb311b7, type: 3}
       propertyPath: m_Name
       value: Horse red
-      objectReference: {fileID: 0}
-    - target: {fileID: 8241790184769648817, guid: a0dc54397c3cad54d9a138c6bdb311b7, type: 3}
-      propertyPath: m_Speed
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

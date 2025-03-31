@@ -40,5 +40,16 @@ namespace Horses
 
             _splineCurrentPosition = Mathf.Clamp01(_lengthWalked / _splineLength);
         }
+
+        public bool IsCurrentWalkedPercentageEnoughThenDesired(float desiredPercentage)
+        {
+            return _splineCurrentPosition >= desiredPercentage;
+        }
+
+        public float GetPercentage()
+        {
+            return _splineCurrentPosition;
+        }
+
     }
 }

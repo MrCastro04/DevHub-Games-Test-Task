@@ -1,15 +1,36 @@
+using UnityEngine;
+
 namespace Horses.States
 {
     public class AIChargeState : AIBaseState
     {
+        private float _desiredPercentage = 0.4f;
+        private bool _hasCharged = false;
+
         public override void EnterState(HorseContoller horseContoller)
         {
-            horseContoller.Agent.speed += 10;
+
         }
 
         public override void UpdateState(HorseContoller horseContoller)
         {
-           // чекає 40% пройденого шляху , і прискорюється
+            horseContoller.Patrol.CalculateNextPosition();
+
+            Vector3 currentPosition = horseContoller.transform.position;
+
+            Vector3 newPosition = horseContoller.Patrol.GetNextPosition();
+
+            Vector3 offset = newPosition - currentPosition;
+
+            horseContoller.Movement.MoveAgentByMoveOffset(offset);
+
+            if (!_hasCharged &&
+                horseContoller.Patrol.IsCurrentWalkedPercentageEnoughThenDesired(_desiredPercentage))
+            {
+                _hasCharged = true;
+
+                horseContoller.Agent.speed += 10f;
+            }
         }
     }
 }

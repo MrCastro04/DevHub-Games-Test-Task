@@ -1,4 +1,6 @@
+using Core;
 using UnityEngine;
+using Utility;
 
 namespace Horses.States
 {
@@ -6,21 +8,17 @@ namespace Horses.States
     {
         public override void EnterState(HorseContoller horseContoller)
         {
-            if (horseContoller.WinHorseManager.HasWinner)
-                return;
+            WinHorseManager winHorseManager =
+                GameObject.FindGameObjectWithTag(Constants.WIN_HORSE_MANAGER_TAG)
+                    .GetComponent<WinHorseManager>();
 
-            HorseContoller randomHorse = horseContoller.WinHorseManager.GetRandomHorse();
+            winHorseManager.MarkRandomHorseWinHorse();
 
-            if (!randomHorse.IsWinHorse())
+            if (horseContoller.IsWinHorse)
             {
-                randomHorse.SetThisHorseWinHorse();
-
-                horseContoller.WinHorseManager.MarkWinnerChosen();
-
-                randomHorse.SwitchState(randomHorse.WinHorseState);
+                horseContoller.SwitchState(horseContoller.WinHorseState);
             }
         }
-
 
         public override void UpdateState(HorseContoller horseContoller)
         {

@@ -6,8 +6,6 @@ namespace Core
 {
     public class WinHorseManager : MonoBehaviour
     {
-        public bool HasWinner => _hasWinner;
-
         private HorseContoller[] _horses;
         private bool _hasWinner = false;
 
@@ -23,8 +21,14 @@ namespace Core
             }
         }
 
-        public void MarkWinnerChosen()
+        public void MarkRandomHorseWinHorse()
         {
+            if(_hasWinner) return;
+
+            HorseContoller randomHorse = GetRandomHorse();
+
+            randomHorse.SetThisHorseWinHorse();
+
             _hasWinner = true;
         }
 
