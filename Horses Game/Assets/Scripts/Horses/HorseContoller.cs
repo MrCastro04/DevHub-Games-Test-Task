@@ -6,20 +6,26 @@ namespace Horses
     [RequireComponent(typeof(Patrol))]
     [RequireComponent(typeof(NavMeshAgent))]
     [RequireComponent(typeof(Movement))]
+
     public class HorseContoller : MonoBehaviour
     {
         public readonly AIFinishState FinishState = new();
         public readonly AIPatrolState PatrolState = new();
+        public readonly AIChooseState ChooseState = new();
+
 
         private AIBaseState _currentState;
+        private bool _canChoose = true;
 
+        public bool CanChoose => _canChoose;
         public NavMeshAgent Agent { get; private set; }
         public Patrol Patrol { get; private set; }
         public Movement Movement { get; private set; }
+        public bool IsChosenByPlayer { get; private set; }
 
         private void Awake()
         {
-            _currentState = PatrolState;
+            _currentState = ChooseState;
 
             Agent = GetComponent<NavMeshAgent>();
 
@@ -38,11 +44,22 @@ namespace Horses
             _currentState.UpdateState(this);
         }
 
-        private void SwitchState(AIBaseState newState)
+        public void SwitchState(AIBaseState newState)
         {
             _currentState = newState;
 
             _currentState.EnterState(this);
+        }
+
+        private void OnMouseDown()
+        {
+            Debug.Log("'23132131312");
+            if (_canChoose)
+            {
+                _canChoose = false;
+
+                IsChosenByPlayer = true;
+            }
         }
     }
 }
