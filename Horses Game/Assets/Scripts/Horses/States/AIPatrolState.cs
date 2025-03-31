@@ -6,8 +6,21 @@ namespace Horses.States
     {
         public override void EnterState(HorseContoller horseContoller)
         {
+            if (horseContoller.WinHorseManager.HasWinner)
+                return;
 
+            HorseContoller randomHorse = horseContoller.WinHorseManager.GetRandomHorse();
+
+            if (!randomHorse.IsWinHorse())
+            {
+                randomHorse.SetThisHorseWinHorse();
+
+                horseContoller.WinHorseManager.MarkWinnerChosen();
+
+                randomHorse.SwitchState(randomHorse.WinHorseState);
+            }
         }
+
 
         public override void UpdateState(HorseContoller horseContoller)
         {
