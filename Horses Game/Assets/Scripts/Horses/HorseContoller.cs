@@ -23,12 +23,11 @@ namespace Horses
         private bool _isWinHorse = false;
         private float _waitTime = 3f;
 
-        public bool IsWinHorse => _isWinHorse;
-
         public NavMeshAgent Agent { get; private set; }
         public Patrol Patrol { get; private set; }
         public Movement Movement { get; private set; }
         public bool IsChosenByPlayer { get; private set; }
+        public bool IsWinHorse => _isWinHorse;
 
         private void Awake()
         {
@@ -70,7 +69,8 @@ namespace Horses
 
         public void SetThisHorseWinHorse()
         {
-            if(!_isWinHorse) _isWinHorse = true;
+            if(_isWinHorse == false)
+                _isWinHorse = true;
         }
 
         private void OnMouseDown()
