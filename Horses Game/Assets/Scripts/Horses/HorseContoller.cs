@@ -20,7 +20,7 @@ namespace Horses
         private void Awake()
         {
             _currentState = PatrolState;
-            
+
             Agent = GetComponent<NavMeshAgent>();
 
             Patrol = GetComponent<Patrol>();
