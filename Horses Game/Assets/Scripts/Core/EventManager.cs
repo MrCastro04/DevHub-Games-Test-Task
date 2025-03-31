@@ -4,8 +4,10 @@ namespace Core
 {
     public static class EventManager
     {
-        public static event Action OnLevelStart;
+        public static event Action OnPlayerConfirmChoose;
+        public static event Action <float> OnShowTimeInMainCanvas;
 
-        public static void RaiseOnLevelStart() => OnLevelStart?.Invoke();
+        public static void RaiseOnPlayerConfirmChoose() => OnPlayerConfirmChoose?.Invoke();
+        public static void RaiseOnShowTimeInMainCanvas(float time) => OnShowTimeInMainCanvas?.Invoke(time);
     }
 }

@@ -37,7 +37,6 @@ namespace Horses
         public void CalculateNextPosition()
         {
             _lengthWalked += Time.deltaTime * _agent.speed;
-            
 
             _splineCurrentPosition = Mathf.Clamp01(_lengthWalked / _splineLength);
         }

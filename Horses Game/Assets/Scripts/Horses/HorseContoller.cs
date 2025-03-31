@@ -1,3 +1,5 @@
+using System.Collections;
+using Core;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -13,9 +15,9 @@ namespace Horses
         public readonly AIPatrolState PatrolState = new();
         public readonly AIChooseState ChooseState = new();
 
-
         private AIBaseState _currentState;
         private bool _canChoose = true;
+        private float _waitTime = 3f;
 
         public bool CanChoose => _canChoose;
         public NavMeshAgent Agent { get; private set; }
@@ -32,6 +34,16 @@ namespace Horses
             Patrol = GetComponent<Patrol>();
 
             Movement = GetComponent<Movement>();
+        }
+
+        private void OnEnable()
+        {
+            EventManager.OnPlayerConfirmChoose += HandleOnPlayerConfirmChoose;
+        }
+
+        private void OnDisable()
+        {
+            EventManager.OnPlayerConfirmChoose -= HandleOnPlayerConfirmChoose;
         }
 
         private void Start()
@@ -60,6 +72,25 @@ namespace Horses
 
                 IsChosenByPlayer = true;
             }
+        }
+
+        private void HandleOnPlayerConfirmChoose()
+        {
+            StartCoroutine(WaitTimeAndRun(_waitTime));
+        }
+
+        private IEnumerator WaitTimeAndRun(float time)
+        {
+            while (time > 0)
+            {
+                time -= Time.deltaTime;
+
+                EventManager.RaiseOnShowTimeInMainCanvas(time);
+
+                yield return null;
+            }
+
+            SwitchState(PatrolState);
         }
     }
 }

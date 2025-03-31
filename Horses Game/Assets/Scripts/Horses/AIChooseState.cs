@@ -1,3 +1,5 @@
+using Core;
+
 namespace Horses
 {
     public class AIChooseState : AIBaseState
@@ -6,15 +8,13 @@ namespace Horses
 
         public override void UpdateState(HorseContoller horseContoller)
         {
-            if (horseContoller.CanChoose == false) return;
-
             if (horseContoller.IsChosenByPlayer)
                 ConfirmChoose(horseContoller);
         }
 
         private void ConfirmChoose(HorseContoller horseContoller)
         {
-            horseContoller.SwitchState(horseContoller.PatrolState);
+            EventManager.RaiseOnPlayerConfirmChoose();
         }
     }
 }

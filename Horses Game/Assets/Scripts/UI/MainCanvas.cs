@@ -1,32 +1,31 @@
-using System;
 using Core;
 using TMPro;
 using UnityEngine;
 
 namespace UI
 {
- public class MainCanvas : MonoBehaviour
- {
-  private TextMeshProUGUI _text;
+    public class MainCanvas : MonoBehaviour
+    {
+        private TextMeshProUGUI _text;
 
-  private void Awake()
-  {
-   _text = GetComponentInChildren<TextMeshProUGUI>();
-  }
+        private void Awake()
+        {
+            _text = GetComponentInChildren<TextMeshProUGUI>();
+        }
 
-  private void OnEnable()
-  {
-   EventManager.OnLevelStart += HandleOnLevelStart;
-  }
+        private void OnEnable()
+        {
+            EventManager.OnShowTimeInMainCanvas += HandleOnShowTimeInMainCanvas;
+        }
 
-  private void OnDisable()
-  {
-   EventManager.OnLevelStart -= HandleOnLevelStart;
-  }
+        private void OnDisable()
+        {
+            EventManager.OnShowTimeInMainCanvas -= HandleOnShowTimeInMainCanvas;
+        }
 
-  private void HandleOnLevelStart()
-  {
-   _text.enabled = true;
-  }
- }
+        private void HandleOnShowTimeInMainCanvas(float time)
+        {
+            _text.text = time.ToString("0");
+        }
+    }
 }
