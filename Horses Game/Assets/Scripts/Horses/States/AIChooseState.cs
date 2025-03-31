@@ -1,6 +1,6 @@
 using Core;
 
-namespace Horses
+namespace Horses.States
 {
     public class AIChooseState : AIBaseState
     {

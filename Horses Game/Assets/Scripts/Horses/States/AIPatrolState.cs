@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Horses
+namespace Horses.States
 {
     public class AIPatrolState : AIBaseState
     {

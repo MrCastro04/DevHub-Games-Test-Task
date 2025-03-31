@@ -1,4 +1,4 @@
-namespace Horses
+namespace Horses.States
 {
     public class AIFinishState : AIBaseState
     {

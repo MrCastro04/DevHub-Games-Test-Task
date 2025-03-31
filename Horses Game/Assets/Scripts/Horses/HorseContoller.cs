@@ -1,7 +1,9 @@
 using System.Collections;
 using Core;
+using Horses.States;
 using UnityEngine;
 using UnityEngine.AI;
+using Utility;
 
 namespace Horses
 {
@@ -65,12 +67,17 @@ namespace Horses
 
         private void OnMouseDown()
         {
-            Debug.Log("'23132131312");
             if (_canChoose)
             {
                 _canChoose = false;
 
                 IsChosenByPlayer = true;
+
+                MainCamera mainCamera =
+                    GameObject.FindGameObjectWithTag(Constants.MAIN_CAMERA_TAG)
+                    .GetComponent<MainCamera>();
+
+                mainCamera.AttachCameraToConfirmedHorse(this);
             }
         }
 
