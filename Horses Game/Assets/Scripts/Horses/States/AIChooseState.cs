@@ -9,10 +9,10 @@ namespace Horses.States
         public override void UpdateState(HorseContoller horseContoller)
         {
             if (horseContoller.IsChosenByPlayer)
-                ConfirmChoose(horseContoller);
+                ConfirmChoose();
         }
 
-        private void ConfirmChoose(HorseContoller horseContoller)
+        private void ConfirmChoose()
         {
             EventManager.RaiseOnPlayerConfirmChoose();
         }

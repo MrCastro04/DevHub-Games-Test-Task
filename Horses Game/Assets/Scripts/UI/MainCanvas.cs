@@ -1,16 +1,19 @@
 using Core;
 using TMPro;
 using UnityEngine;
+using Utility;
 
 namespace UI
 {
     public class MainCanvas : MonoBehaviour
     {
-        private TextMeshProUGUI _text;
+        private TextMeshProUGUI _startTimerText;
 
         private void Awake()
         {
-            _text = GetComponentInChildren<TextMeshProUGUI>();
+            _startTimerText =
+                GameObject.FindGameObjectWithTag(Constants.START_TIMER_TEXT_TAG)
+                .GetComponent<TextMeshProUGUI>();
         }
 
         private void OnEnable()
@@ -29,12 +32,12 @@ namespace UI
 
         private void HandleOnShowTimeInMainCanvas(float time)
         {
-            _text.text = time.ToString("0");
+            _startTimerText.text = time.ToString("0");
         }
 
         private void HandleOnHorsesStartRun()
         {
-            _text.enabled = false;
+            _startTimerText.enabled = false;
         }
 
         private void HandleOnAllHorsesFinish()

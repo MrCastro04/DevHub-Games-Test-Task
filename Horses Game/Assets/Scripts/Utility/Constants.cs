@@ -8,5 +8,7 @@ namespace Utility
         public static string MAIN_CAMERA_TAG = "MainCamera";
         public static string HORSE_TAG = "Horse";
         public static string WIN_HORSE_MANAGER_TAG = "Win Horse Manager";
+        public static string MONEY_TEXT_TAG = "Money Text";
+        public static string START_TIMER_TEXT_TAG = "Start Timer Text";
     }
 }

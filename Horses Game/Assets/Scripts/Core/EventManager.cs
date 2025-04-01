@@ -5,13 +5,12 @@ namespace Core
 {
     public static class EventManager
     {
-
         public static event Action OnAllHorsesFinish;
         public static event Action OnHorsesStartRun;
-        public static event Action OnPlayerConfirmChoose;
-        public static event Action<HorseContoller> OnHorseGetsFinish;
+        public static event Action  OnPlayerConfirmChoose;
         public static event Action <int> OnPlayerGetMoney;
         public static event Action <float> OnShowTimeInMainCanvas;
+        public static event Action <HorseContoller> OnHorseGetsFinish;
         public static event Action <HorseContoller,int, int> OnShowSpeedBuffValue;
         public static event Action <HorseContoller, int> OnShowMoneyValueForHorse;
 

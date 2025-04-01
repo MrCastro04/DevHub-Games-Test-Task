@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Horse
   - Win Horse Manager
+  - Animal
+  - Money Text
   layers:
   - Default
   - TransparentFX

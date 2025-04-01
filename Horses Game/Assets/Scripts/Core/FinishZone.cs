@@ -26,6 +26,8 @@ namespace Core
         {
             if (other.TryGetComponent(out HorseContoller horse))
             {
+                EventManager.RaiseOnHorseGetsFinish(horse);
+
                 WinHorseManager winHorseManager =
                     GameObject.FindGameObjectWithTag(Constants.WIN_HORSE_MANAGER_TAG)
                         .GetComponent<WinHorseManager>();

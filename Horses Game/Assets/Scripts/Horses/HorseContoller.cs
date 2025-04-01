@@ -29,7 +29,7 @@ namespace Horses
         public NavMeshAgent Agent { get; private set; }
         public Patrol Patrol { get; private set; }
         public Movement Movement { get; private set; }
-        public bool IsChosenByPlayer { get; private set; }
+        public bool IsChosenByPlayer { get; private set; } = false;
         public int HorseMoneyValue { get; private set; }
         public int HorseMINSpeedBuffValue { get; private set; }
         public int HorseMAXSpeedBuffValue { get; private set; }
