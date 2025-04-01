@@ -8,6 +8,8 @@ namespace Horses.States
     {
         public override void EnterState(HorseContoller horseContoller)
         {
+            EventManager.RaiseOnHorsesStartRun();
+
             WinHorseManager winHorseManager =
                 GameObject.FindGameObjectWithTag(Constants.WIN_HORSE_MANAGER_TAG)
                     .GetComponent<WinHorseManager>();

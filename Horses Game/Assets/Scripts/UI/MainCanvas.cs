@@ -16,16 +16,23 @@ namespace UI
         private void OnEnable()
         {
             EventManager.OnShowTimeInMainCanvas += HandleOnShowTimeInMainCanvas;
+            EventManager.OnHorsesStartRun += HandleOnHorsesStartRun;
         }
 
         private void OnDisable()
         {
             EventManager.OnShowTimeInMainCanvas -= HandleOnShowTimeInMainCanvas;
+            EventManager.OnHorsesStartRun -= HandleOnHorsesStartRun;
         }
 
         private void HandleOnShowTimeInMainCanvas(float time)
         {
             _text.text = time.ToString("0");
+        }
+
+        private void HandleOnHorsesStartRun()
+        {
+            _text.enabled = false;
         }
     }
 }
