@@ -8,6 +8,7 @@ TagManager:
   - Win Horse Manager
   - Animal
   - Money Text
+  - Start Timer Text
   layers:
   - Default
   - TransparentFX
