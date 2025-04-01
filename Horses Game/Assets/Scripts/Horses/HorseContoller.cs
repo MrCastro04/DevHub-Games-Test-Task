@@ -164,6 +164,7 @@ namespace Horses
             }
 
             _hasChoose = true;
+
             EventManager.RaiseOnShowSpeedBuffValue(this,HorseMINSpeedBuffValue, HorseMAXSpeedBuffValue);
         }
     }
