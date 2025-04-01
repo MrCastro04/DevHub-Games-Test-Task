@@ -10,7 +10,8 @@ namespace Horses
     [RequireComponent(typeof(Patrol))]
     [RequireComponent(typeof(NavMeshAgent))]
     [RequireComponent(typeof(Movement))]
-
+    [RequireComponent(typeof(BoxCollider))]
+    [RequireComponent(typeof(Rigidbody))]
     public class HorseContoller : MonoBehaviour
     {
         public readonly AIChargeState WinHorseState = new();
@@ -18,6 +19,7 @@ namespace Horses
         public readonly AIPatrolState PatrolState = new();
         public readonly AIChooseState ChooseState = new();
 
+        private Rigidbody _rigidbody;
         private AIBaseState _currentState;
         private bool _canChoose = true;
         private bool _isWinHorse = false;
@@ -32,6 +34,8 @@ namespace Horses
         private void Awake()
         {
             _currentState = ChooseState;
+
+            _rigidbody = GetComponent<Rigidbody>();
 
             Agent = GetComponent<NavMeshAgent>();
 

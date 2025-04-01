@@ -9,6 +9,8 @@ namespace Core
         private HorseContoller[] _horses;
         private bool _hasWinner = false;
 
+        public HorseContoller[] Horses => _horses;
+
         private void Start()
         {
             GameObject[] horseObjects = GameObject.FindGameObjectsWithTag(Constants.HORSE_TAG);

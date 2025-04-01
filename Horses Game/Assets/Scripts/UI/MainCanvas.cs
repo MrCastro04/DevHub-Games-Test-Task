@@ -17,12 +17,14 @@ namespace UI
         {
             EventManager.OnShowTimeInMainCanvas += HandleOnShowTimeInMainCanvas;
             EventManager.OnHorsesStartRun += HandleOnHorsesStartRun;
+            EventManager.OnAllHorsesFinish += HandleOnAllHorsesFinish;
         }
 
         private void OnDisable()
         {
             EventManager.OnShowTimeInMainCanvas -= HandleOnShowTimeInMainCanvas;
             EventManager.OnHorsesStartRun -= HandleOnHorsesStartRun;
+            EventManager.OnAllHorsesFinish -= HandleOnAllHorsesFinish;
         }
 
         private void HandleOnShowTimeInMainCanvas(float time)
@@ -33,6 +35,11 @@ namespace UI
         private void HandleOnHorsesStartRun()
         {
             _text.enabled = false;
+        }
+
+        private void HandleOnAllHorsesFinish()
+        {
+
         }
     }
 }
