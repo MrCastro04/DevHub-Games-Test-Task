@@ -8,11 +8,11 @@ namespace UI.Canvas_Components
     public class SpeedContainerController : MonoBehaviour
     {
         private HorseContoller _thisHorse;
-        private TextMeshProUGUI _moneyText;
+        private TextMeshProUGUI _speedText;
 
         private void Awake()
         {
-            _moneyText = GetComponentInChildren<TextMeshProUGUI>();
+            _speedText = GetComponentInChildren<TextMeshProUGUI>();
 
             _thisHorse = GetComponentInParent<HorseContoller>();
         }
@@ -31,7 +31,7 @@ namespace UI.Canvas_Components
         {
             if(horse != _thisHorse) return;
 
-            _moneyText.text = $"{min} - {max}";
+            _speedText.text = $"{min} - {max}";
         }
     }
 }

@@ -136,6 +136,8 @@ namespace Horses
         {
             var value = Random.Range(1000, 100000);
 
+            EventManager.RaiseOnShowMoneyValueForHorse(this, value);
+
             return value;
         }
 
