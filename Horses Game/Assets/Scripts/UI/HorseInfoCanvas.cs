@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace UI
 {
+    [RequireComponent(typeof(Canvas))]
     public class HorseInfoCanvas : MonoBehaviour
     {
         private Canvas _canvas;

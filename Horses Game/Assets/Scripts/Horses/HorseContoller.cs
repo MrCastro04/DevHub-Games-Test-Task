@@ -20,7 +20,8 @@ namespace Horses
 
         private Rigidbody _rigidbody;
         private AIBaseState _currentState;
-        private bool _canChoose = true;
+        private bool _hasSpeedBuffValues = false;
+        private bool _hasChoose = true;
         private bool _isWinHorse = false;
         private float _waitTime = 3f;
         private float _nextBuffPercent = 0.1f;
@@ -29,13 +30,15 @@ namespace Horses
         public Patrol Patrol { get; private set; }
         public Movement Movement { get; private set; }
         public bool IsChosenByPlayer { get; private set; }
+        public int HorseMoneyValue { get; private set; }
+        public int HorseMINSpeedBuffValue { get; private set; }
+        public int HorseMAXSpeedBuffValue { get; private set; }
 
         public float NextBuffPercent
         {
             get => _nextBuffPercent;
             set => _nextBuffPercent = value;
         }
-
 
         private void Awake()
         {
@@ -48,6 +51,10 @@ namespace Horses
             Patrol = GetComponent<Patrol>();
 
             Movement = GetComponent<Movement>();
+
+            HorseMoneyValue = GenerateRandomHorseMoneyValue();
+
+            GenerateHorseMINMAXSpeedValues();
         }
 
         private void OnEnable()
@@ -85,16 +92,16 @@ namespace Horses
 
         public void ApplySpeedBuff()
         {
-            var randomValue = Random.Range(3, 10);
+            var randomValue = Random.Range(HorseMINSpeedBuffValue, HorseMAXSpeedBuffValue);
 
             this.Agent.speed += randomValue;
         }
 
         private void OnMouseDown()
         {
-            if (_canChoose)
+            if (_hasChoose)
             {
-                _canChoose = false;
+                _hasChoose = false;
 
                 IsChosenByPlayer = true;
 
@@ -123,6 +130,39 @@ namespace Horses
             }
 
             SwitchState(PatrolState);
+        }
+
+        private int GenerateRandomHorseMoneyValue()
+        {
+            var value = Random.Range(1000, 100000);
+
+            return value;
+        }
+
+        private int GenerateRandomHorseSpeedBuffValue()
+        {
+            var value = Random.Range(1, 10);
+
+            return value;
+        }
+
+        private void GenerateHorseMINMAXSpeedValues()
+        {
+            if(_hasSpeedBuffValues ) return;
+
+            HorseMINSpeedBuffValue = GenerateRandomHorseSpeedBuffValue();
+
+            HorseMAXSpeedBuffValue = GenerateRandomHorseSpeedBuffValue();
+
+            if (HorseMINSpeedBuffValue >= HorseMAXSpeedBuffValue)
+            {
+                GenerateHorseMINMAXSpeedValues();
+
+                return;
+            }
+
+            _hasChoose = true;
+            EventManager.RaiseOnShowSpeedBuffValue(this,HorseMINSpeedBuffValue, HorseMAXSpeedBuffValue);
         }
     }
 }

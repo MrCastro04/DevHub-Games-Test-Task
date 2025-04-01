@@ -9359,6 +9359,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 357706357560176336}
+  - component: {fileID: 6411135389320308724}
   m_Layer: 0
   m_Name: Money Container
   m_TagString: Untagged
@@ -9386,6 +9387,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6411135389320308724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5223237660475194737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b984d6d3cc1446f6b511264852327cfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5404330414777700317
 GameObject:
   m_ObjectHideFlags: 0
@@ -9523,6 +9536,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1050229600677725387}
+  - component: {fileID: 8143427717462761515}
   m_Layer: 0
   m_Name: Speed Buff Container
   m_TagString: Untagged
@@ -9550,6 +9564,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8143427717462761515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5609023814944584404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f36201dedf24858aff892f19f4379c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5646834346183387931
 GameObject:
   m_ObjectHideFlags: 0
