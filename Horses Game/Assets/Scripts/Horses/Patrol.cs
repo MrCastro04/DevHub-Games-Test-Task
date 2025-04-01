@@ -8,7 +8,7 @@ namespace Horses
     {
         [SerializeField] private GameObject _splineGameObject;
 
-        private SplineContainer _splineCmp;
+        private SplineContainer _spline;
         private NavMeshAgent _agent;
         private float _splineLength;
         private float _splineCurrentPosition = 0f;
@@ -16,19 +16,20 @@ namespace Horses
         private bool _isWalking = true;
 
         public float SplineCurrentPosition => _splineCurrentPosition;
+        public SplineContainer Spline => _spline;
 
         private void Awake()
         {
-            _splineCmp = _splineGameObject.GetComponent<SplineContainer>();
+            _spline = _splineGameObject.GetComponent<SplineContainer>();
 
-            _splineLength = _splineCmp.CalculateLength();
+            _splineLength = _spline.CalculateLength();
 
             _agent = GetComponent<NavMeshAgent>();
         }
 
         public Vector3 GetNextPosition()
         {
-            return _splineCmp.EvaluatePosition( _splineCurrentPosition );
+            return _spline.EvaluatePosition( _splineCurrentPosition );
         }
 
         public void CalculateNextPosition()
@@ -36,11 +37,6 @@ namespace Horses
             _lengthWalked += Time.deltaTime * _agent.speed;
 
             _splineCurrentPosition = Mathf.Clamp01(_lengthWalked / _splineLength);
-        }
-
-        public bool IsCurrentWalkedPercentageEnoughThenDesired(float desiredPercentage)
-        {
-            return _splineCurrentPosition >= desiredPercentage;
         }
     }
 }

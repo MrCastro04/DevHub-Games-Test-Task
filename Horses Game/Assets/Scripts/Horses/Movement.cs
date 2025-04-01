@@ -9,21 +9,16 @@ namespace Horses
     {
         public bool IsMoving = false;
 
+        private Patrol _patrol;
         private NavMeshAgent _agent;
-        private Animator _animatorCmp;
+        private Animator _animator;
         private Vector3 _moveVector;
-        private Vector3 _originalForwardVector;
-        private bool _clampAnimatorSpeedAgain = false;
-
-        public NavMeshAgent Agent => _agent;
 
         private void Awake()
         {
+            _patrol = GetComponentInParent<Patrol>();
             _agent = GetComponent<NavMeshAgent>();
-
-            _animatorCmp = GetComponentInChildren<Animator>();
-
-            _originalForwardVector = transform.forward;
+            _animator = GetComponentInChildren<Animator>();
         }
 
         private void Start()
@@ -43,16 +38,9 @@ namespace Horses
             IsMoving = true;
         }
 
-        public void UpdateAgentSpeed(float newSpeed, bool shouldClampSpeed)
-        {
-            _agent.speed = newSpeed;
-
-            _clampAnimatorSpeedAgain = shouldClampSpeed;
-        }
-
         private void MovementAnimator()
         {
-            float speed = _animatorCmp.GetFloat(Constants.ANIMATOR_SPEED_ANIMATOR_PARAM);
+            float speed = _animator.GetFloat(Constants.ANIMATOR_SPEED_ANIMATOR_PARAM);
 
             float smoothering = Time.deltaTime * _agent.acceleration;
 
@@ -68,7 +56,7 @@ namespace Horses
 
             speed = Mathf.Clamp01( speed );
 
-            _animatorCmp.SetFloat(Constants.ANIMATOR_SPEED_ANIMATOR_PARAM, speed);
+            _animator.SetFloat(Constants.ANIMATOR_SPEED_ANIMATOR_PARAM, speed);
         }
     }
 }

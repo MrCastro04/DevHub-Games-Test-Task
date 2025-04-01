@@ -12,12 +12,14 @@ namespace Horses
     [RequireComponent(typeof(Movement))]
     [RequireComponent(typeof(BoxCollider))]
     [RequireComponent(typeof(Rigidbody))]
+    [RequireComponent(typeof(HorseAudioController))]
     public class HorseContoller : MonoBehaviour
     {
         public readonly AIFinishState FinishState = new();
         public readonly AIPatrolState PatrolState = new();
         public readonly AIChooseState ChooseState = new();
 
+        private HorseAudioController _horseAudioController;
         private Rigidbody _rigidbody;
         private AIBaseState _currentState;
         private bool _hasSpeedBuffValues = false;
@@ -43,6 +45,8 @@ namespace Horses
         private void Awake()
         {
             _currentState = ChooseState;
+
+            _horseAudioController = GetComponent<HorseAudioController>();
 
             _rigidbody = GetComponent<Rigidbody>();
 

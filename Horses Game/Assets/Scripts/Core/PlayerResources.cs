@@ -23,7 +23,7 @@ namespace Core
         public void EarnMoney(int amount)
         {
             Money += amount;
-            
+
             EventManager.RaiseOnPlayerGetMoney(Money);
         }
     }
