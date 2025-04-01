@@ -9399,6 +9399,7 @@ GameObject:
   - component: {fileID: 662130662638587410}
   - component: {fileID: 6955956362993608275}
   - component: {fileID: 5715891994804285295}
+  - component: {fileID: 774442965932773710}
   m_Layer: 0
   m_Name: Horse Info Canvas
   m_TagString: Untagged
@@ -9499,6 +9500,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 632602136f9594c48990ef103921e610, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &774442965932773710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5404330414777700317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8543b195d1da4dcf9022015d6dd66224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5609023814944584404
