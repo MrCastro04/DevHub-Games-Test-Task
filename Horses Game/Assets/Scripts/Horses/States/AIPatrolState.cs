@@ -14,6 +14,13 @@ namespace Horses.States
         {
             float currentPercent = horseContoller.Patrol.SplineCurrentPosition;
 
+            if (currentPercent >= 1f)
+            {
+                horseContoller.SwitchState(horseContoller.FinishState);
+                return;
+            }
+
+
             if (currentPercent >= horseContoller.NextBuffPercent)
             {
                 horseContoller.ApplySpeedBuff();

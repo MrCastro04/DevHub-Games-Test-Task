@@ -24,13 +24,15 @@ namespace Core
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.GetComponent<HorseContoller>())
+            if (other.TryGetComponent(out HorseContoller horse))
             {
                 WinHorseManager winHorseManager =
                     GameObject.FindGameObjectWithTag(Constants.WIN_HORSE_MANAGER_TAG)
                         .GetComponent<WinHorseManager>();
 
-                _horseQueue.Enqueue(other.GetComponent<HorseContoller>());
+                horse.Movement.IsMoving = false;
+
+                _horseQueue.Enqueue(horse.GetComponent<HorseContoller>());
 
                 if (_horseQueue.Count == winHorseManager.Horses.Length)
                 {

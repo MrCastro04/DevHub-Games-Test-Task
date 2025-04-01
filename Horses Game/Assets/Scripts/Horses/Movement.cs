@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.AI;
 using Utility;
@@ -8,11 +7,12 @@ namespace Horses
     [RequireComponent(typeof(NavMeshAgent))]
     public class Movement : MonoBehaviour
     {
+        public bool IsMoving = false;
+
         private NavMeshAgent _agent;
         private Animator _animatorCmp;
         private Vector3 _moveVector;
         private Vector3 _originalForwardVector;
-        private bool _isMoving = false;
         private bool _clampAnimatorSpeedAgain = false;
 
         public NavMeshAgent Agent => _agent;
@@ -40,7 +40,7 @@ namespace Horses
         {
             _agent.Move(offset);
 
-            _isMoving = true;
+            IsMoving = true;
         }
 
         public void UpdateAgentSpeed(float newSpeed, bool shouldClampSpeed)
@@ -56,7 +56,7 @@ namespace Horses
 
             float smoothering = Time.deltaTime * _agent.acceleration;
 
-            if ( _isMoving )
+            if ( IsMoving )
             {
                 speed += smoothering;
             }

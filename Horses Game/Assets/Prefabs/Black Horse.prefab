@@ -7047,6 +7047,7 @@ GameObject:
   m_Component:
   - component: {fileID: 310857769611182025}
   - component: {fileID: 310857769618952541}
+  - component: {fileID: 1333654357042444257}
   m_Layer: 0
   m_Name: LP_Horse_Mesh_2_9_Black_02 Variant
   m_TagString: Untagged
@@ -7096,7 +7097,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: a136e182fde1b2044aec99073bbaab16, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -7104,6 +7105,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1333654357042444257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310857769611668521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 232a23042e93471f905b085bf6f85e51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &310857769611668523
 GameObject:
   m_ObjectHideFlags: 0

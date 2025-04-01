@@ -19,11 +19,6 @@ namespace Horses
 
         private void Awake()
         {
-            if (_splineGameObject == null)
-            {
-                Debug.LogWarning($"{name} does not have a spline");
-            }
-
             _splineCmp = _splineGameObject.GetComponent<SplineContainer>();
 
             _splineLength = _splineCmp.CalculateLength();
