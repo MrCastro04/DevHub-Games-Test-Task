@@ -14,7 +14,6 @@ namespace Horses
     [RequireComponent(typeof(Rigidbody))]
     public class HorseContoller : MonoBehaviour
     {
-        public readonly AIChargeState WinHorseState = new();
         public readonly AIFinishState FinishState = new();
         public readonly AIPatrolState PatrolState = new();
         public readonly AIChooseState ChooseState = new();
@@ -30,7 +29,7 @@ namespace Horses
         public Patrol Patrol { get; private set; }
         public Movement Movement { get; private set; }
         public bool IsChosenByPlayer { get; private set; }
-        public bool IsWinHorse => _isWinHorse;
+
         public float NextBuffPercent
         {
             get => _nextBuffPercent;
@@ -86,7 +85,7 @@ namespace Horses
 
         public void ApplySpeedBuff()
         {
-            var randomValue = Random.Range(1, 4);
+            var randomValue = Random.Range(3, 10);
 
             this.Agent.speed += randomValue;
         }

@@ -54,7 +54,7 @@ namespace Horses
         {
             float speed = _animatorCmp.GetFloat(Constants.ANIMATOR_SPEED_ANIMATOR_PARAM);
 
-            float smoothering = Time.deltaTime * _agent.speed;
+            float smoothering = Time.deltaTime * _agent.acceleration;
 
             if ( _isMoving )
             {
