@@ -47,12 +47,5 @@ namespace Horses
         {
             return _splineCurrentPosition >= desiredPercentage;
         }
-
-        public float GetTenPercentOfAllRoad()
-        {
-            var tenPercent = _splineLength / 10;
-
-            return tenPercent;
-        }
     }
 }

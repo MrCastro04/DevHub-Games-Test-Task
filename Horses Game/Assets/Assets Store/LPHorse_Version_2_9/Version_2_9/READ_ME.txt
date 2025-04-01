@@ -58,7 +58,7 @@ A Mouth has been added.
 Several minor adjustments have been made.
 
 Textures and Materials:
-The Mane’s material can no longer be assigned separately and now is instead the same color as the tail/forelegs.
+The Maneâ€™s material can no longer be assigned separately and now is instead the same color as the tail/forelegs.
 Eye shading has been redesigned.
 Version 2.31 and earlier eye materials are not supported with version 2.9
 Eye Albedo textures have increased from 2 to 8.
@@ -72,7 +72,7 @@ The Rig is now designed to make use of root motion.
 
 Animations:
 Version 2.31 and earlier animations are not supported with version 2.9.
-Animation files are no longer baked into the FBX file and are instead located in a separate “Animations” folder.
+Animation files are no longer baked into the FBX file and are instead located in a separate â€œAnimationsâ€ folder.
 Animations are now setup for layering, and a basic knowledge of animation controllers is highly recommended to get the most out of this package.
 Overall Animation Clip Count has increased from 21 to 105.
 Please visit: https://pettingerr.wixsite.com/3dmodels for a complete animation clip list.

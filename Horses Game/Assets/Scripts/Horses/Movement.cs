@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 using Utility;
@@ -15,7 +16,6 @@ namespace Horses
         private bool _clampAnimatorSpeedAgain = false;
 
         public NavMeshAgent Agent => _agent;
-        public Vector3 OriginalForwardVector => _originalForwardVector;
 
         private void Awake()
         {
@@ -31,38 +31,9 @@ namespace Horses
             _agent.updateRotation = false;
         }
 
-        public void MoveAgentByDestination(Vector3 destination)
+        private void Update()
         {
-            _agent.SetDestination(destination);
-
-            _isMoving = true;
-        }
-
-        public void StopMovingAgent()
-        {
-            _agent.ResetPath();
-
-            _isMoving = false;
-        }
-
-        public bool ReachedDestination()
-        {
-            if (_agent.pathPending)
-            {
-                return false;
-            }
-
-            if (_agent.remainingDistance > _agent.stoppingDistance)
-            {
-                return false;
-            }
-
-            if (_agent.hasPath || _agent.velocity.sqrMagnitude != 0f)
-            {
-                return false;
-            }
-
-            return true;
+            MovementAnimator();
         }
 
         public void MoveAgentByMoveOffset(Vector3 offset)
@@ -79,27 +50,25 @@ namespace Horses
             _clampAnimatorSpeedAgain = shouldClampSpeed;
         }
 
-        public void Rotate(Vector3 newForwardVector)
+        private void MovementAnimator()
         {
-            if (newForwardVector == Vector3.zero)
+            float speed = _animatorCmp.GetFloat(Constants.ANIMATOR_SPEED_ANIMATOR_PARAM);
+
+            float smoothering = Time.deltaTime * _agent.speed;
+
+            if ( _isMoving )
             {
-                return;
+                speed += smoothering;
             }
 
-            float normal = Time.deltaTime * _agent.angularSpeed;
+            else
+            {
+                speed -= smoothering;
+            }
 
-            Quaternion startQuaternion = transform.rotation;
+            speed = Mathf.Clamp01( speed );
 
-            Quaternion endQuaternion = Quaternion.LookRotation(newForwardVector);
-
-            transform.rotation = Quaternion.Lerp(startQuaternion, endQuaternion, normal);
-        }
-
-        private void MovePlayer()
-        {
-            Vector3 offset = _moveVector * Time.deltaTime * _agent.speed;
-
-            _agent.Move(offset);
+            _animatorCmp.SetFloat(Constants.ANIMATOR_SPEED_ANIMATOR_PARAM, speed);
         }
     }
 }

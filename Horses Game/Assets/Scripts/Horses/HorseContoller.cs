@@ -86,7 +86,7 @@ namespace Horses
 
         public void ApplySpeedBuff()
         {
-            var randomValue = Random.Range(3, 10);
+            var randomValue = Random.Range(1, 4);
 
             this.Agent.speed += randomValue;
         }
