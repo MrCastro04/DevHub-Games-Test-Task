@@ -39,7 +39,7 @@ namespace UI
 
         private void HandleOnAllHorsesFinish()
         {
-
+          Debug.Log("All Horses Finish");
         }
     }
 }
