@@ -24,12 +24,19 @@ namespace Horses
         private bool _canChoose = true;
         private bool _isWinHorse = false;
         private float _waitTime = 3f;
+        private float _nextBuffPercent = 0.1f;
 
         public NavMeshAgent Agent { get; private set; }
         public Patrol Patrol { get; private set; }
         public Movement Movement { get; private set; }
         public bool IsChosenByPlayer { get; private set; }
         public bool IsWinHorse => _isWinHorse;
+        public float NextBuffPercent
+        {
+            get => _nextBuffPercent;
+            set => _nextBuffPercent = value;
+        }
+
 
         private void Awake()
         {
@@ -75,6 +82,13 @@ namespace Horses
         {
             if(_isWinHorse == false)
                 _isWinHorse = true;
+        }
+
+        public void ApplySpeedBuff()
+        {
+            var randomValue = Random.Range(3, 10);
+
+            this.Agent.speed += randomValue;
         }
 
         private void OnMouseDown()

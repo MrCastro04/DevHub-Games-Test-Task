@@ -1,6 +1,5 @@
 using Core;
 using UnityEngine;
-using Utility;
 
 namespace Horses.States
 {
@@ -9,21 +8,21 @@ namespace Horses.States
         public override void EnterState(HorseContoller horseContoller)
         {
             EventManager.RaiseOnHorsesStartRun();
-
-            WinHorseManager winHorseManager =
-                GameObject.FindGameObjectWithTag(Constants.WIN_HORSE_MANAGER_TAG)
-                    .GetComponent<WinHorseManager>();
-
-            winHorseManager.MarkRandomHorseWinHorse();
-
-            if (horseContoller.IsWinHorse)
-            {
-                horseContoller.SwitchState(horseContoller.WinHorseState);
-            }
         }
 
         public override void UpdateState(HorseContoller horseContoller)
         {
+            float currentPercent = horseContoller.Patrol.SplineCurrentPosition;
+
+            if (currentPercent >= horseContoller.NextBuffPercent)
+            {
+                horseContoller.ApplySpeedBuff();
+
+                horseContoller.NextBuffPercent += 0.1f;
+
+                horseContoller.NextBuffPercent = Mathf.Clamp01(horseContoller.NextBuffPercent);
+            }
+
             horseContoller.Patrol.CalculateNextPosition();
 
             Vector3 currentPosition = horseContoller.transform.position;

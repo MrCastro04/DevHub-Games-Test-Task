@@ -327,10 +327,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1610388336}
     m_Modifications:
-    - target: {fileID: 3474525940431316428, guid: 07509077dc7d7e54484210402b4cc6ad, type: 3}
-      propertyPath: m_Speed
-      value: 30
-      objectReference: {fileID: 0}
     - target: {fileID: 6927848659541239104, guid: 07509077dc7d7e54484210402b4cc6ad, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.864006
@@ -1459,10 +1455,6 @@ PrefabInstance:
     - target: {fileID: 4415017188999709779, guid: d7568a5523a469c4793c509872a4f646, type: 3}
       propertyPath: m_Name
       value: Black Horse
-      objectReference: {fileID: 0}
-    - target: {fileID: 8154514235747251922, guid: d7568a5523a469c4793c509872a4f646, type: 3}
-      propertyPath: m_Speed
-      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

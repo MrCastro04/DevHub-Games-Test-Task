@@ -15,6 +15,8 @@ namespace Horses
         private float _lengthWalked = 0f;
         private bool _isWalking = true;
 
+        public float SplineCurrentPosition => _splineCurrentPosition;
+
         private void Awake()
         {
             if (_splineGameObject == null)
@@ -46,10 +48,11 @@ namespace Horses
             return _splineCurrentPosition >= desiredPercentage;
         }
 
-        public float GetPercentage()
+        public float GetTenPercentOfAllRoad()
         {
-            return _splineCurrentPosition;
-        }
+            var tenPercent = _splineLength / 10;
 
+            return tenPercent;
+        }
     }
 }
