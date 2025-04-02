@@ -24,7 +24,6 @@ namespace Horses
         private AIBaseState _currentState;
         private bool _hasSpeedBuffValues = false;
         private bool _hasChoose = true;
-        private bool _isWinHorse = false;
         private float _waitTime = 3f;
         private float _nextBuffPercent = 0.1f;
 
@@ -55,10 +54,6 @@ namespace Horses
             Patrol = GetComponent<Patrol>();
 
             Movement = GetComponent<Movement>();
-
-            HorseMoneyValue = GenerateRandomHorseMoneyValue();
-
-            GenerateHorseMINMAXSpeedValues();
         }
 
         private void OnEnable()
@@ -73,7 +68,28 @@ namespace Horses
 
         private void Start()
         {
+            // Перенесено з Awake для забезпечення правильного порядку ініціалізації
+            HorseMoneyValue = GenerateRandomHorseMoneyValue();
+
+            // Додаємо невелику затримку для генерації значень швидкості
+            StartCoroutine(DelayedSpeedValuesGeneration());
+
             _currentState.EnterState(this);
+        }
+
+        private IEnumerator DelayedSpeedValuesGeneration()
+        {
+            // Чекаємо один кадр, щоб усі компоненти встигли ініціалізуватися
+            yield return null;
+
+            // Генеруємо значення швидкості
+            GenerateHorseMINMAXSpeedValues();
+
+            // Повторно відправляємо подію для впевненості
+            if (_hasSpeedBuffValues)
+            {
+                EventManager.RaiseOnShowSpeedBuffValue(this, HorseMINSpeedBuffValue, HorseMAXSpeedBuffValue);
+            }
         }
 
         private void Update()
@@ -86,12 +102,6 @@ namespace Horses
             _currentState = newState;
 
             _currentState.EnterState(this);
-        }
-
-        public void SetThisHorseWinHorse()
-        {
-            if(_isWinHorse == false)
-                _isWinHorse = true;
         }
 
         public void ApplySpeedBuff()
@@ -154,7 +164,7 @@ namespace Horses
 
         private void GenerateHorseMINMAXSpeedValues()
         {
-            if(_hasSpeedBuffValues ) return;
+            if(_hasSpeedBuffValues) return;
 
             HorseMINSpeedBuffValue = GenerateRandomHorseSpeedBuffValue();
 
@@ -163,13 +173,13 @@ namespace Horses
             if (HorseMINSpeedBuffValue >= HorseMAXSpeedBuffValue)
             {
                 GenerateHorseMINMAXSpeedValues();
-
                 return;
             }
 
+            _hasSpeedBuffValues = true; // Додано присвоєння true, яке раніше було відсутнє
             _hasChoose = true;
 
-            EventManager.RaiseOnShowSpeedBuffValue(this,HorseMINSpeedBuffValue, HorseMAXSpeedBuffValue);
+            EventManager.RaiseOnShowSpeedBuffValue(this, HorseMINSpeedBuffValue, HorseMAXSpeedBuffValue);
         }
     }
 }

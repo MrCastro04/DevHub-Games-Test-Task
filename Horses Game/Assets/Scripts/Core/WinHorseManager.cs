@@ -23,17 +23,6 @@ namespace Core
             }
         }
 
-        public void MarkRandomHorseWinHorse()
-        {
-            if(_hasWinner) return;
-
-            HorseContoller randomHorse = GetRandomHorse();
-
-            randomHorse.SetThisHorseWinHorse();
-
-            _hasWinner = true;
-        }
-
         public HorseContoller GetRandomHorse()
         {
             int index = Random.Range(0, _horses.Length);

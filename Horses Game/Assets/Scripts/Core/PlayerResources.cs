@@ -1,3 +1,4 @@
+using Core.Saves;
 using UnityEngine;
 
 namespace Core
@@ -10,10 +11,17 @@ namespace Core
 
         private void Awake()
         {
+            if (Instance != null && Instance != this)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
 
-        public void GetMoneyFromSave(Saves.SaveData save)
+        public void GetMoneyFromSave(SaveData save)
         {
             Money = save.Money;
 
