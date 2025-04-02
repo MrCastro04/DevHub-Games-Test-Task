@@ -11,6 +11,8 @@ namespace Core
         private BoxCollider _boxCollider;
         private Queue <HorseContoller> _horseQueue = new();
 
+        public Queue<HorseContoller> HorseQueue;
+
         private void Awake()
         {
             _boxCollider = GetComponent<BoxCollider>();

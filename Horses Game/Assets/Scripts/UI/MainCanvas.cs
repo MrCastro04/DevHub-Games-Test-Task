@@ -7,10 +7,13 @@ namespace UI
 {
     public class MainCanvas : MonoBehaviour
     {
+        private Canvas _canvas;
         private TextMeshProUGUI _startTimerText;
 
         private void Awake()
         {
+            _canvas = GetComponent<Canvas>();
+
             _startTimerText =
                 GameObject.FindGameObjectWithTag(Constants.START_TIMER_TEXT_TAG)
                 .GetComponent<TextMeshProUGUI>();
@@ -37,7 +40,7 @@ namespace UI
 
         private void HandleOnHorsesStartRun()
         {
-            _startTimerText.enabled = false;
+            _canvas.enabled = false;
         }
 
         private void HandleOnAllHorsesFinish()
