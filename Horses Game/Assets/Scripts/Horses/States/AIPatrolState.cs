@@ -20,7 +20,6 @@ namespace Horses.States
                 return;
             }
 
-
             if (currentPercent >= horseContoller.NextBuffPercent)
             {
                 horseContoller.ApplySpeedBuff();

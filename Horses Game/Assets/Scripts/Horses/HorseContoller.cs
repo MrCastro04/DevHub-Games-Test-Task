@@ -19,6 +19,7 @@ namespace Horses
         public readonly AIPatrolState PatrolState = new();
         public readonly AIChooseState ChooseState = new();
 
+        private static bool _globalChoiceConfirmed = false;
         private HorseAudioController _horseAudioController;
         private Rigidbody _rigidbody;
         private AIBaseState _currentState;
@@ -68,10 +69,8 @@ namespace Horses
 
         private void Start()
         {
-            // Перенесено з Awake для забезпечення правильного порядку ініціалізації
             HorseMoneyValue = GenerateRandomHorseMoneyValue();
 
-            // Додаємо невелику затримку для генерації значень швидкості
             StartCoroutine(DelayedSpeedValuesGeneration());
 
             _currentState.EnterState(this);
@@ -79,13 +78,10 @@ namespace Horses
 
         private IEnumerator DelayedSpeedValuesGeneration()
         {
-            // Чекаємо один кадр, щоб усі компоненти встигли ініціалізуватися
             yield return null;
 
-            // Генеруємо значення швидкості
             GenerateHorseMINMAXSpeedValues();
 
-            // Повторно відправляємо подію для впевненості
             if (_hasSpeedBuffValues)
             {
                 EventManager.RaiseOnShowSpeedBuffValue(this, HorseMINSpeedBuffValue, HorseMAXSpeedBuffValue);
@@ -113,9 +109,11 @@ namespace Horses
 
         private void OnMouseDown()
         {
-            if (_hasChoose)
+            if (_hasChoose && !_globalChoiceConfirmed)
             {
                 _hasChoose = false;
+
+                _globalChoiceConfirmed = true;
 
                 IsChosenByPlayer = true;
 
@@ -176,10 +174,14 @@ namespace Horses
                 return;
             }
 
-            _hasSpeedBuffValues = true; // Додано присвоєння true, яке раніше було відсутнє
-            _hasChoose = true;
+            _hasSpeedBuffValues = true;
 
             EventManager.RaiseOnShowSpeedBuffValue(this, HorseMINSpeedBuffValue, HorseMAXSpeedBuffValue);
+        }
+
+        private void OnDestroy()
+        {
+            _globalChoiceConfirmed = false;
         }
     }
 }

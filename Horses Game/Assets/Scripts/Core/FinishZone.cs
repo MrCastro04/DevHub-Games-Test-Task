@@ -9,7 +9,7 @@ namespace Core
     public class FinishZone : MonoBehaviour
     {
         private BoxCollider _boxCollider;
-        public Queue <HorseContoller> HorseQueue = new();
+        public Queue <HorseContoller> HorseQueue { get; private set; } = new();
 
 
         private void Awake()
