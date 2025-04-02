@@ -22,14 +22,17 @@ namespace UI.Canvas_Components
 
         private void HandleOnHorseGetsFinish(HorseContoller finishedHorse)
         {
-            if (finishedHorse.IsChosenByPlayer && _finishZone.HorseQueue.Count == 0)
+            if(finishedHorse.IsChosenByPlayer == false) return;
+
+            if (_finishZone.HorseQueue.Count == 1)
             {
                 ShowWinCanvas();
             }
 
-            else if (finishedHorse.IsChosenByPlayer && _finishZone.HorseQueue.Count != 0)
+            if ( _finishZone.HorseQueue.Count > 1)
             {
-                ShowLoseView();
+
+              ShowLoseView();
             }
         }
 

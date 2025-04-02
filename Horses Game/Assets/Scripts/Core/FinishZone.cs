@@ -9,9 +9,8 @@ namespace Core
     public class FinishZone : MonoBehaviour
     {
         private BoxCollider _boxCollider;
-        private Queue <HorseContoller> _horseQueue = new();
+        public Queue <HorseContoller> HorseQueue = new();
 
-        public Queue<HorseContoller> HorseQueue;
 
         private void Awake()
         {
@@ -28,6 +27,8 @@ namespace Core
         {
             if (other.TryGetComponent(out HorseContoller horse))
             {
+                HorseQueue.Enqueue(horse.GetComponent<HorseContoller>());
+
                 EventManager.RaiseOnHorseGetsFinish(horse);
 
                 WinHorseManager winHorseManager =
@@ -36,9 +37,7 @@ namespace Core
 
                 horse.Movement.IsMoving = false;
 
-                _horseQueue.Enqueue(horse.GetComponent<HorseContoller>());
-
-                if (_horseQueue.Count == winHorseManager.Horses.Length)
+                if (HorseQueue.Count == winHorseManager.Horses.Length)
                 {
                     EventManager.RaiseOnAllHorsesFinish();
                 }

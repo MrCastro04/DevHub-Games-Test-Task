@@ -9,7 +9,12 @@ namespace UI
         public void Enable()
         {
             gameObject.SetActive(true);
-            _animation.Play();
+
+            if (_animation != null)
+                _animation.Play();
+            else
+                Debug.LogWarning("Animation не призначено у WinView!");
         }
+
     }
 }
