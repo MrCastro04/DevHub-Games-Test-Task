@@ -1,4 +1,4 @@
-# Horses-Game-Task
+# DevHub Games Test Task on position ( Junior Unity Game Developer ) 
 
 Date of receipt of test assignment - 31.03.2025.
 Task submission date (apk file and final push to GitHub) - 02.04.2025.
