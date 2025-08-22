@@ -7,7 +7,6 @@ Task submission date (apk file and final push to GitHub) - 02.04.2025.
 The test assignment was designed to last three days.
 
 if you wanna see code , you should choose branch named "main".
-=
 
 This game should be available on phones.
 The player places a bet on one of the horses. Then the race begins. If the player's horse wins the race, the player receives game currency.
