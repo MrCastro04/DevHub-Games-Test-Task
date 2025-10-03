@@ -1,8 +1,8 @@
 # Boosteight Games Test Task on position ( Junior Unity Game Developer ) 
 
-Date of receipt of test assignment - 31.03.2025.
+Date of receipt of test assignment - 24.10.2025.
 
-Task submission date (apk file and final push to GitHub) - 02.04.2025.
+Task submission date (apk file and final push to GitHub) - 27.10.2025.
 
 Time on complete: 5 days.
 
