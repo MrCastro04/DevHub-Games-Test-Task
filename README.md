@@ -1,6 +1,6 @@
 Devices: Android.
 
-Genre: Casino, .
+Genre: Casino .
 
 Test Task Info : https://docs.google.com/document/d/1uxojn3VrnoCYuNPdT7pv6dy_8yCxUwiIW30OnOp06lQ/edit?usp=drive_link
 
